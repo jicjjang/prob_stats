@@ -1,6 +1,5 @@
 from thinkstats import Cdf
 from thinkstats import myplot
-from matplotlib import pyplot
 
 t = [2, 1, 3, 2, 5]
 cdf = Cdf.MakeCdfFromList(t)
