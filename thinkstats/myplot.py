@@ -52,6 +52,10 @@ def Underride(d, **options):
 def Clf():
     """Clears the figure."""
     pyplot.clf()
+    
+def Close():
+    """Close pyplot."""
+    pyplot.close()
 
 
 def Plot(xs, ys, style='', **options):
