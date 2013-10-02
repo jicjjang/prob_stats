@@ -97,7 +97,8 @@ def main():
     pmf = Pmf.MakePmfFromList(speeds, 'speeds')
     cdf = Cdf.MakeCdfFromList(speeds, 'speeds')
     if h_speed:
-        print '허준영 percentile rank is ', cdf.Prob(h_speed) * 100
+        print '허준영s speed is ', h_speed
+        print 'His percentile rank is ', cdf.Prob(h_speed) * 100
 
     myplot.Clf()
     myplot.Pmf(pmf)
