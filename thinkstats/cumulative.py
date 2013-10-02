@@ -93,12 +93,16 @@ def MakeFigures(pool, firsts, others):
                 ylabel='probability',
                 axis=[0, 200, 0, 1])
 
+    Resample(firsts.weight_cdf)
+
+
 def main(name, data_dir=''):
     MakeExample()
 
     pool, firsts, others = MakeTables(data_dir)
     MakeFigures(pool, firsts, others)
-    
+
+    myplot.Close()
 
 if __name__ == '__main__':
     import sys
