@@ -36,14 +36,18 @@ def ex6_13(n, ns=1000):
 
     myplot.Close()
 
-def ex6_14(n, ns=1000):
+def ex6_14(n, do_log=False, ns=1000):
     exp = randvar.Exponential(1)
 
     def prod_log(t):
         p = 1
         for x in t:
             p = p * x
-        return math.log(p)
+
+        if do_log == True:
+            return math.log(p)
+        else:
+            return p
     
     s = [prod_log([exp.generate() for x in range(n)]) for i in range(ns)]
 
@@ -53,9 +57,9 @@ def ex6_14(n, ns=1000):
     cdf = Cdf.MakeCdfFromList(s)
     myplot.Clf()
     myplot.Cdf(cdf)
-    myplot.Save('clt14'+str(n))
+    myplot.Save('clt14'+str(do_log)+str(n))
 
-    rankit.MakeNormalPlot(s, 'clt14npp'+str(n))
+    rankit.MakeNormalPlot(s, 'clt14npp'+str(do_log)+str(n))
 
     myplot.Close()
 
@@ -68,6 +72,5 @@ if __name__=='__main__':
     ex6_13(4)
     ex6_13(8)
 
-    ex6_14(2)
-    ex6_14(4)
-    ex6_14(8)
+    ex6_14(8, False)
+    ex6_14(8, True)
