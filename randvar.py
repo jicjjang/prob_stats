@@ -32,6 +32,14 @@ class Gumbel(RandomVariable):
         x = random.random()
         return self.mu - self.beta * math.log(-math.log(x))
 
+class Normal(RandomVariable):
+    def __init__(self, mu, sigma):
+        self.mu = mu
+        self.sigma = sigma
+
+    def generate(self):
+        return random.normalvariate(self.mu, self.sigma)
+
 if __name__=='__main__':
     erlang = Erlang(1, 3)
     print erlang.generate()
