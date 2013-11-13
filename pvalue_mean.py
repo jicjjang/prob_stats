@@ -55,42 +55,44 @@ def Resample(t1, t2, n, m):
     sample2 = [random.choice(t2) for i in range(m)]
     delta = thinkstats.Mean(sample1) - thinkstats.Mean(sample2)
     return delta
+
+def runtest(name, actual1, actual2):
+    print name
+
+    # observed delta
+    mu1, mu2 = thinkstats.Mean(actual1), thinkstats.Mean(actual2)
+    delta = abs(mu1 - mu2)
+    n, m = len(actual1), len(actual2)
+
+    model = actual1 + actual2
+
+    cdf, pvalue = PValue(model, model, n, m, delta)
+    print 'n:', n
+    print 'm:', m
+    print 'mu1', mu1
+    print 'mu2', mu2
+    print 'delta', delta
+    print 'p-value', pvalue
+
+    PlotCdf(name, cdf, delta)
  
 if __name__ == "__main__":
     # get the data
     pool, firsts, others = cumulative.MakeTables('thinkstats')
-    mean_var = thinkstats.MeanVar(pool.lengths)
-    
-    n = len(firsts.lengths)
-    m = len(others.lengths)
 
-    print 'Gestation:'
-    mu1, mu2 = thinkstats.Mean(firsts.lengths), thinkstats.Mean(others.lengths)
-    delta = abs(mu1 - mu2)
-    # observed delta
+    runtest('Gestation', firsts.lengths, others.lengths)
 
-    cdf, pvalue = PValue(pool.lengths, pool.lengths, n, m, delta)
-    print 'n:', n
-    print 'm:', m
-    print 'mu1', mu1
-    print 'mu2', mu2
-    print 'delta', delta
-    print 'p-value', pvalue
+    runtest('Weights', firsts.weights, others.weights)
 
-    PlotCdf('resampled_diff_gest', cdf, delta)
+    actual1 = random.sample(firsts.weights, len(firsts.weights)/2)
+    actual2 = random.sample(others.weights, len(others.weights)/2)
+    runtest('Weights2', actual1, actual2)
 
-    print 'Weights:'
-    mu1, mu2 = thinkstats.Mean(firsts.weights), thinkstats.Mean(others.weights)
-    delta = abs(mu1 - mu2)
-    # observed delta
+    actual1 = random.sample(firsts.weights, len(firsts.weights)/4)
+    actual2 = random.sample(others.weights, len(others.weights)/4)
+    runtest('Weights4', actual1, actual2)
 
-    cdf, pvalue = PValue(pool.weights, pool.weights, n, m, delta)
-    print 'n:', n
-    print 'm:', m
-    print 'mu1', mu1
-    print 'mu2', mu2
-    print 'delta', delta
-    print 'p-value', pvalue
-
-    PlotCdf('resampled_diff_weight', cdf, delta)
+    actual1 = random.sample(firsts.weights, len(firsts.weights)/8)
+    actual2 = random.sample(others.weights, len(others.weights)/8)
+    runtest('Weights8', actual1, actual2)
 
