@@ -12,8 +12,8 @@ total_sm = 0
 total_med = 0
 for xx in range(1000):
     mean, median = Sample()
-    total_sm += (mean - 0) * (mean - 0)
-    total_med += (median - 0) * (median - 0)
+    total_sm += (mean - 0)**2
+    total_med += (median - 0)**2
 
 MSE = total_sm / 1000.0
 print "sample mean's MSE", MSE
