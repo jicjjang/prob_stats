@@ -10,3 +10,9 @@ ns = [3, 2, 1, 2, 3]
 print co.Cov(xs, ys)
 print co.Cov(xs, zs)
 print co.Cov(xs, ns)
+
+print 'Correlation Test:'
+
+print co.Corr(xs, ys)
+print co.Corr(xs, zs)
+print co.Corr(xs, ns)
