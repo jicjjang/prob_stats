@@ -16,3 +16,10 @@ print 'Correlation Test:'
 print co.Corr(xs, ys)
 print co.Corr(xs, zs)
 print co.Corr(xs, ns)
+
+
+print 'Spearman Correlation Test:'
+
+print co.SpearmanCorr(xs, ys)
+print co.SpearmanCorr(xs, zs)
+print co.SpearmanCorr(xs, ns)
