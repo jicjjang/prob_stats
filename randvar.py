@@ -39,6 +39,14 @@ class Normal(RandomVariable):
 
     def generate(self):
         return random.normalvariate(self.mu, self.sigma)
+        
+class Weibull(RandomVariable):
+    def __init__(self, lam, k):
+        self.lam = lam
+        self.k = k
+    
+    def generate(self):
+        return random.weibullvariate(self.lam, self.k)
 
 if __name__=='__main__':
     erlang = Erlang(1, 3)
