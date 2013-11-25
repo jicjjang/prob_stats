@@ -29,3 +29,17 @@ print 'Linear Least Squares Test:'
 print co.LeastSquares(xs, ys)
 print co.LeastSquares(xs, zs)
 print co.LeastSquares(xs, ns)
+
+
+print 'R^2'
+inter, slope = co.LeastSquares(xs, ys)
+res = co.Residuals(xs, ys, inter, slope)
+print co.CoefDetermination(ys, res)
+
+inter, slope = co.LeastSquares(xs, zs)
+res = co.Residuals(xs, zs, inter, slope)
+print co.CoefDetermination(zs, res)
+
+inter, slope = co.LeastSquares(xs, ns)
+res = co.Residuals(xs, ns, inter, slope)
+print co.CoefDetermination(ns, res)
