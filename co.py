@@ -23,3 +23,9 @@ print 'Spearman Correlation Test:'
 print co.SpearmanCorr(xs, ys)
 print co.SpearmanCorr(xs, zs)
 print co.SpearmanCorr(xs, ns)
+
+print 'Linear Least Squares Test:'
+
+print co.LeastSquares(xs, ys)
+print co.LeastSquares(xs, zs)
+print co.LeastSquares(xs, ns)
